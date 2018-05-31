@@ -20,8 +20,8 @@ pipeline {
      stage('Docker Push') {
       agent any
       steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'docker-hubPassword', usernameVariable: 'docker-hubUser')]) {
-          sh "docker login -u ${env.docker-hubUser} -p ${env.docker-hubPassword}"
+        withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh 'docker push satyasarma99/test-spring-boot-docker:1.0'
         }
       }
